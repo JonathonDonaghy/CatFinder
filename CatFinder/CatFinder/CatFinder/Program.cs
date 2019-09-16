@@ -23,6 +23,8 @@ namespace CatFinder
 
             //Print data
             PrintData.PrintToScreen();
+
+            Console.ReadKey();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace CatFinderTests
             StringWriter output = new StringWriter();
             Console.SetOut(output);
             ArrayList maleCats = new ArrayList();
-            maleCats.AddRange(new string[] {"bill", "bob", "sam" });
+            maleCats.AddRange(new string[] { "bill", "bob", "sam" });
             Globals.cats.Add("Male", maleCats);
 
             ArrayList femaleCats = new ArrayList();
@@ -28,11 +28,11 @@ namespace CatFinderTests
             new[] { Environment.NewLine }, StringSplitOptions.None);
 
             Assert.IsTrue(lines[0] == "Male");
-            Assert.IsTrue(lines[1] == "bill");
-            Assert.IsTrue(lines[4] == "");
-            Assert.IsTrue(lines[5] == "Female");
-            Assert.IsTrue(lines[6] == "sarah");
-            Assert.IsTrue(lines.Length == 11);
+            Assert.IsTrue(lines[2].Contains("bill"));
+            Assert.IsTrue(lines[5] == "");
+            Assert.IsTrue(lines[7] == "Female");
+            Assert.IsTrue(lines[9].Contains("sarah"));
+            Assert.IsTrue(lines.Length > 10);
 
 
         }

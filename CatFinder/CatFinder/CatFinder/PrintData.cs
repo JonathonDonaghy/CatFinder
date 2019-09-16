@@ -8,12 +8,12 @@ namespace CatFinder
         {
             foreach (DictionaryEntry CatGroup in Globals.cats)
             {
-                Console.WriteLine(CatGroup.Key);
+                Console.WriteLine(CatGroup.Key + Environment.NewLine);
                 foreach (string catname in (ArrayList)CatGroup.Value)
                 {
-                    Console.WriteLine(catname);
+                    Console.WriteLine(" - " + catname);
                 }
-                Console.WriteLine();
+                Console.WriteLine(Environment.NewLine);
             }
         }
     }
