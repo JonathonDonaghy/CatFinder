@@ -4,7 +4,7 @@ namespace CatFinder
 {
     public class PrintData
     {
-        public void PrintToScreen()
+        public static void PrintToScreen()
         {
             foreach (DictionaryEntry CatGroup in Globals.cats)
             {
@@ -13,6 +13,7 @@ namespace CatFinder
                 {
                     Console.WriteLine(catname);
                 }
+                Console.WriteLine();
             }
         }
     }

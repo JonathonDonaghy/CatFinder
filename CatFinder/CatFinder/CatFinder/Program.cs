@@ -7,6 +7,8 @@ namespace CatFinder
     {
         public static void Main(string[] args)
         {
+            Console.Title = "CatFinder - Extracting data from JSON body";
+            
             //get json body as list
             string URL = "http://agl-developer-test.azurewebsites.net/people.json";
             //allowing for Custom URL entry.
@@ -15,13 +17,12 @@ namespace CatFinder
                 URL = args[0];
             }
             Globals.owners = GetJSON.retrieveJSON(URL);
+
             //extract the cats
             ExtractCats.ExtractCatsFromOwners();
-            
-            //Print data
 
-            Console.ReadKey();
-            throw new NotImplementedException("nyi");
+            //Print data
+            PrintData.PrintToScreen();
         }
     }
 }
