@@ -6,13 +6,18 @@ using Newtonsoft.Json;
 {
     public static class GetJSON
     {
+        //extracts JSON string from URL
          public static Owner[]  retrieveJSON(string URL)
         {
-            string json = new WebClient().DownloadString(URL);
-            Console.WriteLine(json);
+            WebClient service = new WebClient();
+            service.Proxy = WebRequest.DefaultWebProxy;
+            service.Credentials = System.Net.CredentialCache.DefaultCredentials; ;
+            service.Proxy.Credentials = System.Net.CredentialCache.DefaultCredentials;
+            string json = service.DownloadString(URL);
             return JSONToArray(json);
         }
 
+        //deserialises JSON to array of Owner objects.
         static Owner[] JSONToArray(string json){
             Owner[] owners = JsonConvert.DeserializeObject<Owner[]>(json);
             return owners;

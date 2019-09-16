@@ -1,13 +1,13 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace UnitTestProject1
+namespace CatFinderTests
 {
     [TestClass]
     public class PrintDataTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void checkPrintedData()
         {
         }
     }
