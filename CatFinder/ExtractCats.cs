@@ -5,7 +5,7 @@ namespace CatFinder
     public static class ExtractCats
     {
         //extracts cats into cat dictionary that uses the owners gender as a key
-        public static void ExtractCatsFromOwners()
+        public static void extractCatsFromOwners()
         {
             //loop through all owners in the owners array (generated from the JSON file)
             for (int i = 0; i < Globals.owners.Length; i++)

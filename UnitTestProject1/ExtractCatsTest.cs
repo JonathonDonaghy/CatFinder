@@ -32,7 +32,7 @@ namespace CatFinderTests
             Globals.owners = ownersTest;
             Assert.IsTrue(ownersTest.Length == 5);
 
-            ExtractCats.ExtractCatsFromOwners();
+            ExtractCats.extractCatsFromOwners();
 
             Assert.IsTrue(Globals.cats.Count == 2);
             Assert.IsTrue(Globals.cats.ContainsKey("Male"));

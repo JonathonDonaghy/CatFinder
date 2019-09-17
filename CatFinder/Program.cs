@@ -24,7 +24,7 @@ namespace CatFinder
             //Print data
             PrintData.printToScreen();
 
-            Console.ReadKey();
+            Console.ReadLine();
         }
     }
 }

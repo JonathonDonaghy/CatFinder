@@ -18,13 +18,13 @@ namespace CatFinderTests
             //create dummy cat-Dictionary values
             ArrayList maleCats = new ArrayList();
             maleCats.AddRange(new string[] { "bill", "bob", "sam" });
-            Globals.cats.Add("Male", maleCats);
-
+            ((ArrayList)Globals.cats["Male"]).AddRange(maleCats);
+            
             ArrayList femaleCats = new ArrayList();
             femaleCats.AddRange(new string[] { "sarah", "Sam", "Zelda" });
-            Globals.cats.Add("Female", femaleCats);
-
-            PrintData.PrintToScreen();
+            ((ArrayList)Globals.cats["Female"]).AddRange(femaleCats);
+            
+            PrintData.printToScreen();
 
             string outputString = output.ToString();
             string[] lines = outputString.Split(
@@ -41,9 +41,9 @@ namespace CatFinderTests
             Assert.IsTrue(lines[7] == "Female");
             //first Female owned cat
             Assert.IsTrue(lines[9].Contains("sarah"));
-            //should be a total of 10 lines in the return from our
+            //should be a total of 14 lines in the return from our
             //custom cats values, + 1 from 'lines' variable declaration.
-            Assert.IsTrue(lines.Length == 11);
+            Assert.IsTrue(lines.Length == 15);
 
 
         }
