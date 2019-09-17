@@ -8,6 +8,9 @@ OR Ability to run C# code and access to windows "command window"
 
 DEPENDANCIES (for development only)
 Newtonsoft.Json
+in Nuget package manager (console)
+install-package Newtonsoft.Json
+
 
 DESIGN STRUCTURE
 The program was designed as a simplified Model View Controller design pattern (MVC). As CatFinder takes in no input from the user, the controller aspect of the MVC is redundant. As such, there is the model that collects and retrieves the JSON body from the URL, extracts the necessary data, which is then available for the view to display. 
