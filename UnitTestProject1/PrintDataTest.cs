@@ -20,10 +20,12 @@ namespace CatFinderTests
             //create dummy cat-Dictionary values
             ArrayList maleCats = new ArrayList();
             maleCats.AddRange(new string[] { "bill", "bob", "sam" });
+            ((ArrayList)Globals.cats["Male"]).Clear();
             ((ArrayList)Globals.cats["Male"]).AddRange(maleCats);
             
             ArrayList femaleCats = new ArrayList();
             femaleCats.AddRange(new string[] { "sarah", "Sam", "Zelda" });
+            ((ArrayList)Globals.cats["Female"]).Clear();
             ((ArrayList)Globals.cats["Female"]).AddRange(femaleCats);
             
             PrintData.printToScreen();
