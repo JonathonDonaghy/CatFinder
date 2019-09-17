@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmptyClass.cs" />
     <Compile Include="ExtractCats.cs" />
     <Compile Include="GetJSON.cs" />
     <Compile Include="Globals.cs" />
