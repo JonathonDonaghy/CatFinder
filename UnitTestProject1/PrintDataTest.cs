@@ -3,6 +3,8 @@ using System.Collections;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using CatFinder;
+using System.Threading;
+
 namespace CatFinderTests
 {
     [TestClass]
@@ -25,6 +27,8 @@ namespace CatFinderTests
             ((ArrayList)Globals.cats["Female"]).AddRange(femaleCats);
             
             PrintData.printToScreen();
+            //can be a delay with print to sceen, causing a false error. delay to avoid
+            Thread.Sleep(1000);
 
             string outputString = output.ToString();
             string[] lines = outputString.Split(
