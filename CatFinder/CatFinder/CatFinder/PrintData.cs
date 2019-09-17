@@ -2,16 +2,16 @@
 using System.Collections;
 namespace CatFinder
 {
-    public class PrintData
+    public static class PrintData
     {
-        public static void PrintToScreen()
+        public static void printToScreen()
         {
-            foreach (DictionaryEntry CatGroup in Globals.cats)
+            foreach (DictionaryEntry catGroup in Globals.cats)
             {
-                Console.WriteLine(CatGroup.Key + Environment.NewLine);
-                foreach (string catname in (ArrayList)CatGroup.Value)
+                Console.WriteLine(catGroup.Key + Environment.NewLine);
+                foreach (string catName in (ArrayList)catGroup.Value)
                 {
-                    Console.WriteLine(" - " + catname);
+                    Console.WriteLine(" - " + catName);
                 }
                 Console.WriteLine(Environment.NewLine);
             }

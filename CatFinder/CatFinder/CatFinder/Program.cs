@@ -19,10 +19,10 @@ namespace CatFinder
             Globals.owners = GetJSON.retrieveJSON(URL);
 
             //extract the cats
-            ExtractCats.ExtractCatsFromOwners();
+            ExtractCats.extractCatsFromOwners();
 
             //Print data
-            PrintData.PrintToScreen();
+            PrintData.printToScreen();
 
             Console.ReadKey();
         }

@@ -11,8 +11,11 @@ namespace CatFinderTests
         [TestMethod]
         public void checkPrintedData()
         {
+            //to read console output
             StringWriter output = new StringWriter();
             Console.SetOut(output);
+
+            //create dummy cat-Dictionary values
             ArrayList maleCats = new ArrayList();
             maleCats.AddRange(new string[] { "bill", "bob", "sam" });
             Globals.cats.Add("Male", maleCats);
@@ -27,12 +30,20 @@ namespace CatFinderTests
             string[] lines = outputString.Split(
             new[] { Environment.NewLine }, StringSplitOptions.None);
 
+            //the Console output should match below
+            //first line: male header
             Assert.IsTrue(lines[0] == "Male");
+            //one line gap before first male-owned cat
             Assert.IsTrue(lines[2].Contains("bill"));
+            //empty lines between male and female owned cats
             Assert.IsTrue(lines[5] == "");
+            //Female-owned cats should start here
             Assert.IsTrue(lines[7] == "Female");
+            //first Female owned cat
             Assert.IsTrue(lines[9].Contains("sarah"));
-            Assert.IsTrue(lines.Length > 10);
+            //should be a total of 10 lines in the return from our
+            //custom cats values, + 1 from 'lines' variable declaration.
+            Assert.IsTrue(lines.Length == 11);
 
 
         }
