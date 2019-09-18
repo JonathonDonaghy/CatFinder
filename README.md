@@ -14,7 +14,7 @@ If a parameter is passed into CatFinder, this will be used as the URL to retriev
 ## Development - build and test
 open the project in Visual Studio (or your prefered C# .NET compatable IDE), and choose the relevent options (run all tests or start)
 
-to run from command line - ensure you have the dotnet [ .net SDK Download ] (https://download.visualstudio.microsoft.com/download/pr/f96333a0-ed33-4ebd-9e48-8608bb62e874/525197a37079042c52003753049e443c/dotnet-sdk-2.2.402-osx-gs-x64.pkg) 
+to run from command line - ensure you have the dotnet [ .net SDK Download ](https://download.visualstudio.microsoft.com/download/pr/f96333a0-ed33-4ebd-9e48-8608bb62e874/525197a37079042c52003753049e443c/dotnet-sdk-2.2.402-osx-gs-x64.pkg) 
 build and run project
 '''
 Command Prompt
