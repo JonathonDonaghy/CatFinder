@@ -31,7 +31,9 @@ dotnet test (Path)\CatFinderTests\CatFinderTests.csproj
 
 ## DEPENDANCIES (for development only)
 Newtonsoft.Json
+Install using NuGet Package Manger
 ```
+NuGet Package Manger Console: 
 install-package Newtonsoft.Json
 ```
 
