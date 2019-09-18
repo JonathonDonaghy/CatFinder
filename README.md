@@ -12,27 +12,28 @@ Running CatFinder.exe will start CatFinder and use the URL "http://agl-developer
 If a parameter is passed into CatFinder, this will be used as the URL to retrieve the JSON body.
 
 ## Development - build and test
-open the project in Visual Studio (or your prefered C# .NET compatable IDE), and choose the relevent options (run all tests or start)
+open the project in Visual Studio (or your prefered C# .NET compatable IDE), and choose the relevent options (run all tests, start, etc.)
 
 to run from command line - ensure you have the dotnet [ .net SDK Download ](https://download.visualstudio.microsoft.com/download/pr/f96333a0-ed33-4ebd-9e48-8608bb62e874/525197a37079042c52003753049e443c/dotnet-sdk-2.2.402-osx-gs-x64.pkg) 
-build and run project
-'''
+build and run project:
+```
 Command Prompt
 dotnet run --project (Path)\CatFinder]CatFinder.csproj
-''
+```
 
 run tests
-'''
+```
 Command Prompt
 dotnet test (Path)\CatFinderTests\CatFinderTests.csproj
+```
 
 
 
 ## DEPENDANCIES (for development only)
 Newtonsoft.Json
-''' 
+```
 install-package Newtonsoft.Json
-'''
+```
 
 ## DESIGN
 The program was designed as a simplified Model View Controller design pattern (MVC). As CatFinder takes in no input from the user, the controller aspect of the MVC is redundant. As such, there is the model that collects and retrieves the JSON body from the URL, extracts the necessary data, which is then available for the view to display. 
