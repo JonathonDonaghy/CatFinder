@@ -18,7 +18,7 @@ to run from command line - ensure you have the dotnet [ .net SDK Download ](http
 build and run project:
 ```
 Command Prompt
-dotnet run --project (Path)\CatFinder]CatFinder.csproj
+dotnet run --project (Path)\CatFinder\CatFinder.csproj
 ```
 
 run tests
