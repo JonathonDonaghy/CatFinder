@@ -3,6 +3,8 @@ using System.Collections;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using CatFinder;
+using System.Threading;
+
 namespace CatFinderTests
 {
     [TestClass]
@@ -14,17 +16,20 @@ namespace CatFinderTests
             //to read console output
             StringWriter output = new StringWriter();
             Console.SetOut(output);
+            Hashtable cats = new Hashtable();
 
             //create dummy cat-Dictionary values
             ArrayList maleCats = new ArrayList();
             maleCats.AddRange(new string[] { "bill", "bob", "sam" });
-            ((ArrayList)Globals.cats["Male"]).AddRange(maleCats);
+            cats.Add("Male", maleCats);
             
             ArrayList femaleCats = new ArrayList();
             femaleCats.AddRange(new string[] { "sarah", "Sam", "Zelda" });
-            ((ArrayList)Globals.cats["Female"]).AddRange(femaleCats);
-            
-            PrintData.printToScreen();
+            cats.Add("female", femaleCats);
+
+            PrintData.printToScreen(cats);
+            //can be a delay with print to sceen, causing a false error. delay to avoid
+            Thread.Sleep(1000);
 
             string outputString = output.ToString();
             string[] lines = outputString.Split(

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 
+
 namespace CatFinder
 {
     class MainClass
@@ -16,13 +17,15 @@ namespace CatFinder
             {
                 URL = args[0];
             }
-            Globals.owners = GetJSON.retrieveJSON(URL);
+            //retrieve the json from URL
+            string jsonBody = Services.DataService.retrieveJsonStringFromURL(URL);
 
             //extract the cats
-            ExtractCats.extractCatsFromOwners();
+            Filters.Cats FactoryCat = new Filters.Cats();
+            Hashtable cats = FactoryCat.getCats.ExtractCatsFromJson(jsonBody);
 
             //Print data
-            PrintData.printToScreen();
+            PrintData.printToScreen(cats);
 
             Console.ReadLine();
         }
