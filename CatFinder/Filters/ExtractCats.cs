@@ -3,60 +3,61 @@ using System.Collections;
 using Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using System.Linq;
+using ObjectDumping;
+using System.Collections.Specialized;
+
 namespace CatFinder
 {
     public class ExtractCats
     {
         //extracts cats into cat dictionary that uses the owners gender as a key
-       /* public void extractCatsFromOwners()
-        {
-            //loop through all owners in the owners array (generated from the JSON file)
-            for (int i = 0; i < Globals.owners.Length; i++)
-            {
-                //check for and skip null owner or pets
-                if (Globals.owners[i] == null || Globals.owners[i].getPets == null) continue;
-                string gender = Globals.owners[i].getGender;
-                //if the dictionary doesn't have a gender key yet, create one.
-                if (!Globals.cats.ContainsKey(gender))
-                {
-                    Globals.cats.Add(gender, new ArrayList());
-                }
-
-                foreach (Pets pet in Globals.owners[i].getPets)
-                {
-                    //only adding pets of type "Cat"
-                    if (pet.getType == "Cat")
-                    {
-                        //if the dictionary doesn't have a gender key yet, create one. 
-
-                        
-                        ((ArrayList)Globals.cats[gender]).Add(pet.getName);
-                    }
-                }
-                
-            }
-            foreach(DictionaryEntry catList in Globals.cats)
-            {
-                ((ArrayList)catList.Value).Sort(); //will sort alpabetically
-            }
-        }*/
-
-        public Hashtable ExtractCatsFromJson(string json)
+        public OrderedDictionary ExtractCatsFromJson(string json)
         {
             JArray owners = JArray.Parse(json);
             //JToken results = owners["gender"]; 
-
-            Hashtable cats = new Hashtable();
+            OrderedDictionary cats = new OrderedDictionary();
 
             //adding manually to ensure males are listed first as per requirements
             cats.Add("Male", new ArrayList());
             cats.Add("Female", new ArrayList());
+            /*
+            var bats = from owner in owners
+                       group owner by owner["gender"]
+                       into gender
+                       where gender.Values("pets").Count() > 0
+                       //orderby gender descending
+                       select new { bat = gender.Values<string>("gender"), pets =
+                                from pet in gender.Values("pets")
+                                    //group pet by pet["type"]
+                                    //into types
+                                where pet.Values("type").Count() > 0 
+                                //where pet.Values("type").Equals("Cat")
+                                select new {name = pet.Values("name").First() }
+                       };
+
+            Console.WriteLine(bats.ToString());
+            Console.WriteLine(bats);
+            Console.WriteLine(bats.ElementAt(0).bat.First());
+            foreach(var bat in bats)
+            {
+                Console.WriteLine(bat.bat.First());
+                foreach(var cat in bat.pets)
+                {
+                    //Console.WriteLine(cat);
+                    Console.WriteLine(cat.name);
+                    
+
+                }
+            }
+            Console.ReadKey();
+            */
 
             //parse json into cats dictionary
             foreach(JObject owner in owners)
             {
                 string gender = owner["gender"].Value<string>();
-                if (!cats.ContainsKey(gender))
+                if (!cats.Contains(gender))
                 {
                     cats.Add(gender, new ArrayList());
                 }

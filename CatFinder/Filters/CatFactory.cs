@@ -19,5 +19,6 @@ namespace CatFinder.Filters
         {
             get { return extractCats; }
         }
+        
     }
 }
