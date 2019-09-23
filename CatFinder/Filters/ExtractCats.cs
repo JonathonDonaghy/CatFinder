@@ -14,65 +14,51 @@ namespace CatFinder
         //extracts cats into cat dictionary that uses the owners gender as a key
         public OrderedDictionary ExtractCatsFromJson(string json)
         {
-            JArray owners = JArray.Parse(json);
-            //JToken results = owners["gender"]; 
-            OrderedDictionary cats = new OrderedDictionary();
-
-            //adding manually to ensure males are listed first as per requirements
-            cats.Add("Male", new ArrayList());
-            cats.Add("Female", new ArrayList());
-            /*
-            var bats = from owner in owners
+            //parse the json into a usable object
+            JArray owners = new JArray();
+            try
+            {
+                owners = JArray.Parse(json);
+            }
+            catch(JsonException)
+            {
+                Console.WriteLine("could not parse the JSON body. given JSON may not be valid");
+                Console.WriteLine("please check the source and try again");
+                Console.WriteLine("press any key to close");
+                Console.ReadKey();
+                Environment.Exit(1);
+            }
+            catch
+            {
+                Console.WriteLine("An unknown error occoured when trying to parse the JSON body");
+                Console.WriteLine("press any key to close");
+                Console.ReadKey();
+                Environment.Exit(1);
+            }
+            
+            //extract the needed infomation
+            var CatFinder = from owner in owners
                        group owner by owner["gender"]
                        into gender
-                       where gender.Values("pets").Count() > 0
-                       //orderby gender descending
-                       select new { bat = gender.Values<string>("gender"), pets =
-                                from pet in gender.Values("pets")
-                                    //group pet by pet["type"]
-                                    //into types
-                                where pet.Values("type").Count() > 0 
-                                //where pet.Values("type").Equals("Cat")
-                                select new {name = pet.Values("name").First() }
-                       };
+                       orderby gender.Values()["gender"].ToString()
+                       select new { p = gender.SelectMany(t => t.Values().ElementAt(3)).OrderBy
+                       (t => t["name"]).Where(t => t["type"].ToString() == "Cat") , g = gender.First()["gender"]};
 
-            Console.WriteLine(bats.ToString());
-            Console.WriteLine(bats);
-            Console.WriteLine(bats.ElementAt(0).bat.First());
-            foreach(var bat in bats)
-            {
-                Console.WriteLine(bat.bat.First());
-                foreach(var cat in bat.pets)
-                {
-                    //Console.WriteLine(cat);
-                    Console.WriteLine(cat.name);
-                    
-
-                }
-            }
-            Console.ReadKey();
-            */
-
-            //parse json into cats dictionary
-            foreach(JObject owner in owners)
-            {
-                string gender = owner["gender"].Value<string>();
-                if (!cats.Contains(gender))
-                {
-                    cats.Add(gender, new ArrayList());
-                }
-                foreach(JToken pet in owner["pets"])
-                if (pet["type"].Value<string>() == "Cat") {
-                    ((ArrayList)cats[gender]).Add(pet["name"].ToString());
-                }
-            }
-            foreach (DictionaryEntry catList in cats)
-            {
-                ((ArrayList)catList.Value).Sort(); //will sort alpabetically
-            }
-
+            //using an orded Dictionary to ensure the correct order in the display (Male-owned cats then Female-Owned cats)  
+            //as specified in the challenge.
+            OrderedDictionary cats = castToOrderedDict(CatFinder.ToDictionary(x => x.g, x => x.p.ToList()));
 
             return cats;
+        }
+
+        private OrderedDictionary castToOrderedDict(IDictionary input)
+        {
+            OrderedDictionary ordered = new OrderedDictionary(input.Count);
+            foreach(DictionaryEntry kvp in input)
+            {
+                ordered.Add(kvp.Key, kvp.Value);
+            }
+            return ordered;
         }
 
 

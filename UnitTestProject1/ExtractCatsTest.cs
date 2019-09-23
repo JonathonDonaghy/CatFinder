@@ -2,6 +2,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CatFinder;
 using System.Collections.Specialized;
+using System.Linq;
+using System.IO;
+using System;
 
 namespace CatFinderTests
 {
@@ -11,23 +14,26 @@ namespace CatFinderTests
         [TestMethod]
         public void CheckCats()
         {
-            string mockJson = "";
+            //mock json for generation of cats data structure
+            //adding sarah
+            string mockJson = File.ReadAllText(Environment.CurrentDirectory + "\\MockJSON");
+
+            Console.WriteLine("testing rebuild");
             CatFinder.Filters.Cats catFactory = new CatFinder.Filters.Cats();
             ExtractCats cats = catFactory.getCats;
             //4 left empty to test null values
             
-            Hashtable catTable = cats.ExtractCatsFromJson(mockJson);
-
+            OrderedDictionary catTable = cats.ExtractCatsFromJson(mockJson);
+            
+            // should be two entries
             Assert.IsTrue(catTable.Count == 2);
-            Assert.IsTrue(catTable.Keys[0]);
-            //Assert.IsTrue(Globals.cats.Count == 5);
 
-            Assert.IsTrue(((ArrayList)Globals.cats["Male"]).Count > 0);
-            string name = (string)((ArrayList)Globals.cats["Male"])[0];
-            Assert.IsTrue(name == "dog");
-            Assert.IsTrue((string)((ArrayList)Globals.cats["Male"])[2] == "sally");
-            Assert.IsTrue((string)((ArrayList)Globals.cats["Female"])[0] == "cati");
-            Assert.IsTrue((string)((ArrayList)Globals.cats["Female"])[2] == "sofa");
+            //first entry should be Male
+            Assert.IsTrue(catTable.Cast<DictionaryEntry>().ElementAt(0).Key.ToString() == "Male");
+
+            Assert.IsTrue((string)((ArrayList)catTable["Male"])[0] == "");
+            Assert.IsTrue((string)((ArrayList)catTable["Male"])[2] == "");
+            Assert.IsTrue((string)((ArrayList)catTable["Female"])[0] == "");
 
         }
 

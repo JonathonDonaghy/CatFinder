@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Specialized;
+using Newtonsoft.Json.Linq;
 namespace CatFinder
 {
     public static class PrintData
     {
-        public static void printToScreen(Hashtable cats)
+        public static void printToScreen(OrderedDictionary cats)
         {
             foreach (DictionaryEntry catGroup in cats)
             {
                 Console.WriteLine(catGroup.Key + Environment.NewLine);
-                foreach (string catName in (ArrayList)catGroup.Value)
+                foreach (JObject catData in (IList)catGroup.Value)
                 {
-                    Console.WriteLine(" - " + catName);
+                    Console.WriteLine(" - " + catData["name"]);
                 }
                 Console.WriteLine(Environment.NewLine);
             }

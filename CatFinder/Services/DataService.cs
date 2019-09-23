@@ -10,7 +10,7 @@ using System.Net;
 
 namespace CatFinder.Services
 {
-    static class DataService
+    public static class DataService
     {
         public static string retrieveJsonStringFromURL(string URL)
         {

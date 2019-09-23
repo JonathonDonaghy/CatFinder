@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Specialized;
 
 
 namespace CatFinder
@@ -22,7 +22,7 @@ namespace CatFinder
 
             //extract the cats
             Filters.Cats FactoryCat = new Filters.Cats();
-            Hashtable cats = FactoryCat.getCats.ExtractCatsFromJson(jsonBody);
+            OrderedDictionary cats = FactoryCat.getCats.ExtractCatsFromJson(jsonBody);
 
             //Print data
             PrintData.printToScreen(cats);

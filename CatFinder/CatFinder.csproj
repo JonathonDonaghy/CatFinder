@@ -43,6 +43,10 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ObjectDumping, Version=2.4.19218.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ObjectDumper.NET.2.4.19218.1\lib\net45\ObjectDumping.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -59,8 +63,6 @@
     <Compile Include="Filters\CatFactory.cs" />
     <Compile Include="Filters\ExtractCats.cs" />
     <Compile Include="Services\DataService.cs" />
-    <Compile Include="DataStructures\Owner.cs" />
-    <Compile Include="DataStructures\Pets.cs" />
     <Compile Include="View\PrintData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

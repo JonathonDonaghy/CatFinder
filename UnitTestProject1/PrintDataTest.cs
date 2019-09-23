@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Specialized;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using CatFinder;
@@ -16,7 +17,7 @@ namespace CatFinderTests
             //to read console output
             StringWriter output = new StringWriter();
             Console.SetOut(output);
-            Hashtable cats = new Hashtable();
+            OrderedDictionary cats = new OrderedDictionary();
 
             //create dummy cat-Dictionary values
             ArrayList maleCats = new ArrayList();
