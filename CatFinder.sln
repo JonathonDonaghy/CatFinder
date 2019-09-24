@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatFinder", "CatFinder\CatFinder.csproj", "{78A713B0-AF13-4CC4-A3D9-1603871027F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatFinderTests", "UnitTestProject1\CatFinderTests.csproj", "{0D9837BE-7E40-4197-905F-137FAE16DE9F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatFinderTests", "CatFinderTests\CatFinderTests.csproj", "{0D9837BE-7E40-4197-905F-137FAE16DE9F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{18EEACAB-3FB9-4B48-9BD3-065876A3E3C7}"
 EndProject
