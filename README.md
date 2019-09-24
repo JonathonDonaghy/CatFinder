@@ -32,6 +32,7 @@ dotnet test (Path)\CatFinderTests\CatFinderTests.csproj
 ## DEPENDANCIES (for development only)
 Newtonsoft.Json
  - This is also used for the test project, in install packages on a secondary project in Visual Studio, right click it's resources folder and select "Manage NuGet Packages".
+ 
 Install using NuGet Package Manger
 ```
 NuGet Package Manger Console: 
