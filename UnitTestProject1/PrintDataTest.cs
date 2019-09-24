@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using CatFinder;
 using System.Threading;
+using Newtonsoft.Json.Linq;
 
 namespace CatFinderTests
 {
@@ -20,18 +21,40 @@ namespace CatFinderTests
             OrderedDictionary cats = new OrderedDictionary();
 
             //create dummy cat-Dictionary values
-            ArrayList maleCats = new ArrayList();
-            maleCats.AddRange(new string[] { "bill", "bob", "sam" });
-            cats.Add("Male", maleCats);
+            IList maleCats = new ArrayList();
             
-            ArrayList femaleCats = new ArrayList();
-            femaleCats.AddRange(new string[] { "sarah", "Sam", "Zelda" });
-            cats.Add("female", femaleCats);
+ 
+            JObject bill = new JObject();
+            bill.Add("name", "bill");
+            JObject bob = new JObject();
+            bob.Add("name", "bob");
+            JObject sam = new JObject();
+            sam.Add("name", "sam");
+
+            maleCats.Add(bill);
+            maleCats.Add(bob);
+            maleCats.Add(sam);
+           
+            cats.Add("Male", maleCats);
+
+            IList femaleCats = new ArrayList();
+                        
+            JObject sarah = new JObject();
+            sarah.Add("name", "Sarah");
+            JObject zelda = new JObject();
+            zelda.Add("name", "Zelda");
+
+            femaleCats.Add(sam);
+            femaleCats.Add(sarah);
+            femaleCats.Add(zelda);
+
+            cats.Add("Female", femaleCats);
+
+            //dummy values created
 
             PrintData.printToScreen(cats);
-            //can be a delay with print to sceen, causing a false error. delay to avoid
-            Thread.Sleep(1000);
 
+            //generate and split the console ouput
             string outputString = output.ToString();
             string[] lines = outputString.Split(
             new[] { Environment.NewLine }, StringSplitOptions.None);
@@ -45,10 +68,9 @@ namespace CatFinderTests
             Assert.IsTrue(lines[5] == "");
             //Female-owned cats should start here
             Assert.IsTrue(lines[7] == "Female");
-            //first Female owned cat
-            Assert.IsTrue(lines[9].Contains("sarah"));
-            //should be a total of 14 lines in the return from our
-            //custom cats values, + 1 from 'lines' variable declaration.
+            //Second Female owned cat
+            Assert.IsTrue(lines[10].Contains("Sarah"));
+            //Total expected lines returned
             Assert.IsTrue(lines.Length == 15);
 
 
