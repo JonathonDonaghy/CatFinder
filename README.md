@@ -61,7 +61,7 @@ Newtonsoft's json and linq componets were used for the extraction and sorting of
 
 The *Lock Design pattern* was investigated for CatFinder, but due to the liner nature of the program was decided to be un-necessary. In regards to future development, there would not be a significant increase in development time to add Locks when they became necessary. 
 
-the processing portion of the program was implemented as a factory to implment Inversion of Control, to ensure that if further work was done on the project, the 'CatFinder' implementation would remain robust.
+The processing portion of the program was implemented as a factory to implement Inversion of Control, to ensure that if further work was done on the project, the 'CatFinder' implementation would remain robust.
 
 
 
